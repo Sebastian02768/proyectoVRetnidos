@@ -42,4 +42,16 @@ public class Multa extends Conexion{
         r= ejecutaslq(sql);      
         return r;
     }
+        
+        public ResultSet verDatos(String dato) throws SQLException{
+            String sql = "{call obtenerDatos('', '" +dato+ "')}";
+            r = ejecutaslq(sql);
+            return r;
+        }
+        
+        public ResultSet verDatosM(String dato) throws SQLException{
+            String sql = "{call obtenerDatos('" +dato+ "', '')}";
+            r = ejecutaslq(sql);
+            return r;
+        }
 }

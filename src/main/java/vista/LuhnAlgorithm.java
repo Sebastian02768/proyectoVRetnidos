@@ -46,7 +46,7 @@ public class LuhnAlgorithm {
         String[] cardNumbers = {
             "4381 0850 1026 9738", // Ejemplo de tarjeta inválida
             "4111 1111 1111 1111", // Ejemplo de tarjeta válida (Visa)
-            "5500 0000 0000 0004"  // Ejemplo de tarjeta válida (MasterCard)
+            "4931 7604 8032 4255"  // Ejemplo de tarjeta válida (MasterCard)
         };
 
         for (String cardNumber : cardNumbers) {

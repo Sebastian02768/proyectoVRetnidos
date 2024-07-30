@@ -2,6 +2,7 @@ vista\LuhnAlgorithm.class
 modelo\datos_Usuario$4.class
 modelo\datos_Vehiculos$6.class
 modelo\eliminar_Usuario.class
+modelo\consulta_Multas$2.class
 modelo\eliminar_Vehiculo.class
 modelo\visualizar_Usuarios$1.class
 modelo\eliminar_Usuario$2.class
@@ -24,6 +25,7 @@ modelo\datos_Usuario$3.class
 modelo\gestionUsuarios$5.class
 modelo\visualizar_Vehiculos.class
 modelo\datos_Usuario$7.class
+modelo\consulta_Multas$1.class
 controlador\Vehiculo.class
 controlador\Usuario.class
 modelo\datos_Vehiculos$8.class
@@ -40,8 +42,10 @@ modelo\datos_Multa$1.class
 modelo\datos_Usuario$2.class
 modelo\gestionUsuarios$1.class
 controlador\Multa.class
+modelo\consulta_Multas.class
 modelo\datos_Usuario$9.class
 modelo\datos_Vehiculos$1.class
+modelo\consulta_Multas$3.class
 vista\main.class
 modelo\eliminar_Vehiculo$3.class
 modelo\datos_Vehiculos$7.class
