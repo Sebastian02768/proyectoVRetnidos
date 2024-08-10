@@ -65,7 +65,7 @@ public class Conexion {
      
          public void conectar() throws SQLException {
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_vehiculosretenidos?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "1234");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_proyectodeaula3ro?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "1234");
             System.out.println("Conexión Exitosa");
         } catch (SQLException ex) {
             System.out.println("Error al abrir Conexión: " + ex.getMessage());

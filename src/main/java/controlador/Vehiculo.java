@@ -13,8 +13,8 @@ import java.sql.SQLException;
  */
 public class Vehiculo extends Conexion{
     ResultSet r;
-        public int Vehiculo1(String cedulaPropietario, String tipoV, String placa, String marca, String modelo, int anio, String color, Boolean vRetenido) throws SQLException {
-        String sql = "{call sp_Vehiculo(1, '" +cedulaPropietario+ "', '" +tipoV+ "', '" +placa+ "', '" +marca+ "', '" +modelo+ "', " +anio+ ", '" +color+ "', " +vRetenido+ ")}";
+        public int Vehiculo1(String cedulaPropietario, String tipoV, String placa, String marca, String modelo, int anio, String color) throws SQLException {
+        String sql = "{call sp_Vehiculo(0, '" +cedulaPropietario+ "', '" +tipoV+ "', '" +placa+ "', '" +marca+ "', '" +modelo+ "', " +anio+ ", '" +color+ "')}";
         return ejecutaslq1(sql);
     }
         
@@ -24,13 +24,13 @@ public class Vehiculo extends Conexion{
     }
         
         public ResultSet Vehiculo5() throws SQLException{
-        String sql = "{call sp_Vehiculo(5, '', '', '', '', '', 0, '',null)}";
+        String sql = "{call sp_vehiculo(3, '', '', '', '', '', 0, '')}";
         r= ejecutaslq(sql);      
         return r;
     }
     
         public int Vehiculo4(String placa) throws SQLException{
-        String sql = "{call sp_Vehiculo(4, '', '','"+placa+"', '', '', 0, '', null)}";
+        String sql = "{call sp_vehiculo(2, '', '', '" +placa+ "', '', '', 0, '')}";
         return ejecutaslq1(sql);
     }
         
@@ -39,4 +39,22 @@ public class Vehiculo extends Conexion{
         r= ejecutaslq(sql);      
         return r;
     }
+        
+        public ResultSet verDatos(String cedula) throws SQLException{
+            String sql = "{call sp_consultaVehiculo(1, '"+cedula+"', '')}";
+            r = ejecutaslq(sql);
+            return r;
+        }
+        
+        public ResultSet verDatos1(String placa) throws SQLException{
+            String sql = "{call sp_consultaVehiculo(2, '', '"+placa+"')}";
+            r = ejecutaslq(sql);
+            return r;
+        }
+        
+        public ResultSet verVehiculos(String placa) throws SQLException{
+            String sql = "{call sp_vehiculo(4, '', '', '" +placa+ "', '', '', 0, '')}";
+            r = ejecutaslq(sql);
+            return r;
+        }
 }

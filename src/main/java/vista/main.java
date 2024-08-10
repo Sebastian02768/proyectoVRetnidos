@@ -6,12 +6,11 @@ package vista;
 
 
 import java.sql.SQLException;
-import modelo.consulta_Multas;
+import modelo.MenuOpciones;
 import modelo.datos_Multa;
-import modelo.datos_Vehiculos;
 import modelo.gestionUsuarios;
-import modelo.visualizar_Multa;
-import modelo.visualizar_Vehiculos;
+import modelo.gestionVehiculos;
+
 
 /**
  *
@@ -19,12 +18,7 @@ import modelo.visualizar_Vehiculos;
  */
 public class main {
     public static void main(String[] args) throws SQLException {
-        /*datos_Vehiculos vi = new datos_Vehiculos();
-        vi.cargarVTipos();
-        vi.cargarVMarca();
-        vi.cargarVModelos();
-        vi.setVisible(true);*/
-        consulta_Multas con = new consulta_Multas();
-        con.setVisible(true);
+        MenuOpciones mn = new MenuOpciones();
+        mn.setVisible(true);
     }
 }

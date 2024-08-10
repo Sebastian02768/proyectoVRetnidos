@@ -15,7 +15,7 @@ public class Pago extends Conexion{
     ResultSet r;
     
     public int pago1(int multa, String metodo, String tarjeta, Double monto) throws SQLException{
-        String sql = "{call sp_Pago(1, 0, " +multa+", '" +metodo+ "', '" +tarjeta+ "', " +monto+ ")}";
+        String sql = "{call sp_Pago(0, 0, " +multa+", '" +metodo+ "', '" +tarjeta+ "', " +monto+ ")}";
         return ejecutaslq1(sql);
     }
     
@@ -24,4 +24,15 @@ public class Pago extends Conexion{
         return ejecutaslq1(sql);
     }
     
+    public ResultSet visualizar() throws SQLException{
+        String sql = "{call sp_Pago(3, 0, 0,null, '', 0)}";
+        r = ejecutaslq(sql);
+        return r;
+    }
+    
+    public ResultSet idP(String placa) throws SQLException{
+        String sql = "{call ObtenerMultasNoPagadasConMonto('" +placa+ "')}";
+        r = ejecutaslq(sql);
+        return r;
+    }
 }

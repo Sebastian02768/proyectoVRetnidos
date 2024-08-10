@@ -25,7 +25,6 @@ private HashMap<String, Integer> tipoMultaMap;
      */
     public datos_Multa() {
         initComponents();
-        text_id.setEnabled(false);
     }
 
     /**
@@ -42,40 +41,47 @@ private HashMap<String, Integer> tipoMultaMap;
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
-        text_placa = new javax.swing.JTextField();
+        text_placa = new textField.TextField();
         btn_Buscar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        comboTipoM = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
-        textFecha = new com.toedter.calendar.JDateChooser();
+        comboTipoM = new combo_suggestion.ComboBoxSuggestion();
         btn_Guardar = new javax.swing.JButton();
         btn_Modificar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        comboEstado = new combo_suggestion.ComboBoxSuggestion();
         jLabel5 = new javax.swing.JLabel();
-        text_id = new javax.swing.JTextField();
+        radioSi = new javax.swing.JRadioButton();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textDescripcion = new javax.swing.JTextArea();
+        radioNo = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(246, 242, 242));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel2.setForeground(new java.awt.Color(0, 153, 153));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Registro de Multa");
+
+        jSeparator1.setForeground(new java.awt.Color(255, 102, 51));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(106, 106, 106))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,18 +93,25 @@ private HashMap<String, Integer> tipoMultaMap;
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Ingrese la placa: ");
 
+        btn_Buscar.setBackground(new java.awt.Color(0, 102, 204));
+        btn_Buscar.setForeground(new java.awt.Color(255, 255, 255));
         btn_Buscar.setText("Buscar");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Tipo de multa:");
 
         comboTipoM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboTipoM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboTipoMActionPerformed(evt);
+            }
+        });
 
-        jLabel4.setText("Fecha: ");
-
-        textFecha.setDateFormatString("yyyy-MM-dd");
-
+        btn_Guardar.setBackground(new java.awt.Color(0, 102, 204));
+        btn_Guardar.setForeground(new java.awt.Color(255, 255, 255));
         btn_Guardar.setText("Guardar");
         btn_Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +119,8 @@ private HashMap<String, Integer> tipoMultaMap;
             }
         });
 
+        btn_Modificar.setBackground(new java.awt.Color(0, 102, 204));
+        btn_Modificar.setForeground(new java.awt.Color(255, 255, 255));
         btn_Modificar.setText("Modificar");
         btn_Modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,7 +128,31 @@ private HashMap<String, Integer> tipoMultaMap;
             }
         });
 
-        jLabel5.setText("Ingrese id para modificar:");
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setText("Estado de multa:");
+
+        comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "no pagado", "pendiente", "pagado" }));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel5.setText("Vehículo Retenido:");
+
+        radioSi.setBackground(new java.awt.Color(255, 255, 255));
+        radioSi.setText("Si");
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setText("Descripción:");
+
+        textDescripcion.setColumns(20);
+        textDescripcion.setRows(5);
+        jScrollPane1.setViewportView(textDescripcion);
+
+        radioNo.setBackground(new java.awt.Color(255, 255, 255));
+        radioNo.setText("No");
+        radioNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioNoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -122,45 +161,45 @@ private HashMap<String, Integer> tipoMultaMap;
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(31, 31, 31)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(text_id, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(btn_Guardar)
-                        .addGap(18, 18, 18)
+                        .addGap(134, 134, 134)
+                        .addComponent(btn_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
                         .addComponent(btn_Modificar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
+                        .addGap(54, 54, 54)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(text_placa, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(radioSi, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(radioNo))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
-                                .addComponent(btn_Buscar))
-                            .addComponent(comboTipoM, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(24, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(text_placa, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(31, 31, 31)
+                                        .addComponent(btn_Buscar))
+                                    .addComponent(comboTipoM, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(86, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(text_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(text_placa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -169,15 +208,28 @@ private HashMap<String, Integer> tipoMultaMap;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(comboTipoM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_Modificar)
-                    .addComponent(btn_Guardar))
-                .addGap(38, 38, 38))
+                    .addComponent(jLabel4)
+                    .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(radioSi)
+                    .addComponent(radioNo))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 97, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -195,37 +247,51 @@ private HashMap<String, Integer> tipoMultaMap;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuardarActionPerformed
-    text_id.setEnabled(false);
-    String placa = text_placa.getText().trim();
-    String tipoMulta = (String) comboTipoM.getSelectedItem();
-    if (tipoMulta != null) {
-           int IdEstacion = tipoMultaMap.get(tipoMulta);
-            // Ahora puedes usar selectedId para guardarlo en la base de datos o lo que necesites hacer.
-            System.out.println("ID seleccionado: " + IdEstacion);
-            id1 = IdEstacion;
-        } else {
-            System.out.println("No se ha seleccionado ningún ítem.");
-        } 
-    String fechaIngresoStr = ((JTextField)textFecha.getDateEditor().getUiComponent()).getText().trim();
-        if (tipoMulta == null || placa.isEmpty() || fechaIngresoStr.isEmpty()) {
+String placa = text_placa.getText().trim();
+String tipoMulta = (String) comboTipoM.getSelectedItem();
+
+if (tipoMulta != null) {
+    int IdEstacion = tipoMultaMap.get(tipoMulta);
+    System.out.println("ID seleccionado: " + IdEstacion);
+    id1 = IdEstacion;
+} else {
+    System.out.println("No se ha seleccionado ningún ítem.");
+}
+
+String estado = (String) comboEstado.getSelectedItem();
+String descri = textDescripcion.getText().trim();
+
+// Validar que todos los campos estén llenos
+if (tipoMulta == null || placa.isEmpty() || estado.isEmpty() || descri.isEmpty() || 
+    (!radioSi.isSelected() && !radioNo.isSelected())) {
     JOptionPane.showMessageDialog(this, "Todos los campos deben estar llenos", "Error de Validación", JOptionPane.ERROR_MESSAGE);
     return;
 }
-    Multa mul = new Multa();
+
+// Obtener el valor del radio button seleccionado
+int seleccion = -1; // Variable para guardar la selección
+
+if (radioSi.isSelected()) {
+    seleccion = 1;
+} else if (radioNo.isSelected()) {
+    seleccion = 0;
+}
+
+Multa mul = new Multa();
 int result = 0;
- System.out.println(" " + placa + ","+id1 +","+ fechaIngresoStr);
 try {
-    java.sql.Date fechaIngreso = java.sql.Date.valueOf(fechaIngresoStr);
-    result = mul.Multa1(placa, id1, fechaIngreso);
+    result = mul.Multa1(placa, id1, estado, seleccion, descri);
 
     if (result == 0) {
         JOptionPane.showMessageDialog(this, "Error al insertar la multa", "Mensaje del sistema", JOptionPane.ERROR_MESSAGE);
     } else {
-        JOptionPane.showMessageDialog(this, "Multa insertado correctamente");
+        JOptionPane.showMessageDialog(this, "Multa insertada correctamente");
         // Limpiar campos después de una inserción exitosa
         comboTipoM.setSelectedIndex(0);
         text_placa.setText("");
-        textFecha.setDate(null);
+        comboEstado.setSelectedIndex(0);
+        textDescripcion.setText("");
+        
     }
 } catch (SQLException e) {
     JOptionPane.showMessageDialog(this, "Error al insertar en la base de datos: " + e.getMessage(), "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
@@ -235,55 +301,21 @@ try {
     } catch (SQLException ex) {
         Logger.getLogger(datos_Multa.class.getName()).log(Level.SEVERE, null, ex);
     }
-}       
-    
+}
+ 
     }//GEN-LAST:event_btn_GuardarActionPerformed
 
     private void btn_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModificarActionPerformed
-    text_id.setEnabled(true);
-    int id = Integer.parseInt(text_id.getText());
-    String placa = text_placa.getText().trim();
-    String tipoMulta = (String) comboTipoM.getSelectedItem();
-    if (tipoMulta != null) {
-           int IdEstacion = tipoMultaMap.get(tipoMulta);
-            // Ahora puedes usar selectedId para guardarlo en la base de datos o lo que necesites hacer.
-            System.out.println("ID seleccionado: " + IdEstacion);
-            id1 = IdEstacion;
-        } else {
-            System.out.println("No se ha seleccionado ningún ítem.");
-        } 
-    String fechaIngresoStr = ((JTextField)textFecha.getDateEditor().getUiComponent()).getText().trim();
-        if (tipoMulta == null || placa.isEmpty() || fechaIngresoStr.isEmpty()) {
-    JOptionPane.showMessageDialog(this, "Todos los campos deben estar llenos", "Error de Validación", JOptionPane.ERROR_MESSAGE);
-    return;
-}
-    Multa mul = new Multa();
-int result = 0;
- System.out.println(id +","+ placa + ","+id1 +","+ fechaIngresoStr);
-try {
-    java.sql.Date fechaIngreso = java.sql.Date.valueOf(fechaIngresoStr);
-    result = mul.Multa3(id, placa, id1, fechaIngreso);
 
-    if (result == 0) {
-        JOptionPane.showMessageDialog(this, "Error al modficar la multa", "Mensaje del sistema", JOptionPane.ERROR_MESSAGE);
-    } else {
-        JOptionPane.showMessageDialog(this, "Multa se modifico correctamente");
-        // Limpiar campos después de una inserción exitosa
-        comboTipoM.setSelectedIndex(0);
-        text_placa.setText("");
-        textFecha.setDate(null);
-    }
-} catch (SQLException e) {
-    JOptionPane.showMessageDialog(this, "Error al insertar en la base de datos: " + e.getMessage(), "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
-} finally {
-    try {
-        mul.desconectar();
-    } catch (SQLException ex) {
-        Logger.getLogger(datos_Multa.class.getName()).log(Level.SEVERE, null, ex);
-    }
-}       
-    text_id.setEnabled(false);
     }//GEN-LAST:event_btn_ModificarActionPerformed
+
+    private void comboTipoMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoMActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboTipoMActionPerformed
+
+    private void radioNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioNoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioNoActionPerformed
 
     
     public void cargarDatosM() {
@@ -347,17 +379,21 @@ try {
     private javax.swing.JButton btn_Buscar;
     private javax.swing.JButton btn_Guardar;
     private javax.swing.JButton btn_Modificar;
+    private javax.swing.JComboBox<String> comboEstado;
     private javax.swing.JComboBox<String> comboTipoM;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private com.toedter.calendar.JDateChooser textFecha;
-    private javax.swing.JTextField text_id;
+    private javax.swing.JRadioButton radioNo;
+    private javax.swing.JRadioButton radioSi;
+    private javax.swing.JTextArea textDescripcion;
     private javax.swing.JTextField text_placa;
     // End of variables declaration//GEN-END:variables
 }

@@ -16,8 +16,8 @@ import java.sql.SQLException;
 public class Multa extends Conexion{    
     ResultSet r;    
         
-        public int Multa1(String placa, int TipoMulta, Date fechaInfraccion) throws SQLException {
-        String sql = "{call sp_Multa(1,0, '" +placa+ "', " +TipoMulta+ ", '" +fechaInfraccion+ "')}";
+        public int Multa1(String placa, int TipoMulta, String estado,int retenido, String desripcion) throws SQLException {
+        String sql = "{CALL sp_multa(0, 0, '"+placa+"', "+TipoMulta+", '"+estado+"', " +retenido+ ", '"+desripcion+"')}";
         return ejecutaslq1(sql);
     }
         
@@ -28,12 +28,12 @@ public class Multa extends Conexion{
         
         
         public int Multa4(int id) throws SQLException{
-            String sql = "{call sp_Multa(4, " +id+ ", '', 0, null)}";
+            String sql = "{call sp_multa(2, 1, NULL, NULL, NULL, NULL,NULL)}";
             return ejecutaslq1(sql);
         }
         
         public ResultSet visualizarMulta() throws SQLException{
-            String sql = "{call sp_Multa(5, 0, '', 0, null)}";
+            String sql = "{call sp_multa(3, NULL, NULL, NULL, NULL, NULL, NULL)}";
             r = ejecutaslq(sql);
             return r;
         }
@@ -43,14 +43,21 @@ public class Multa extends Conexion{
         return r;
     }
         
-        public ResultSet verDatos(String dato) throws SQLException{
-            String sql = "{call obtenerDatos('', '" +dato+ "')}";
+        public ResultSet verDatosM(String dato) throws SQLException{
+            String sql = "{call obtenerDatos('" +dato+ "', '')}";
             r = ejecutaslq(sql);
             return r;
         }
         
-        public ResultSet verDatosM(String dato) throws SQLException{
-            String sql = "{call obtenerDatos('" +dato+ "', '')}";
+        public ResultSet verMultasP(String placa) throws SQLException{
+            String sql = "{call ObtenerMultasPorPlaca('"+placa+"', 'pagado')}";
+            r = ejecutaslq(sql);
+            return r;
+        }
+        
+        
+        public ResultSet verMultasNP(String placa) throws SQLException{
+            String sql = "{call ObtenerMultasPorPlaca('"+placa+"', 'no pagado')}";
             r = ejecutaslq(sql);
             return r;
         }
