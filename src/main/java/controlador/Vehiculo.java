@@ -57,4 +57,10 @@ public class Vehiculo extends Conexion{
             r = ejecutaslq(sql);
             return r;
         }
+        
+        public ResultSet verificarV(String placa) throws SQLException{
+            String sql = "{call sp_verificarVehiculo('" +placa+ "')}";
+            r = ejecutaslq(sql);
+            return r;
+        }
 }

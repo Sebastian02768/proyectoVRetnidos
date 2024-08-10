@@ -117,7 +117,7 @@ public class MenuOpciones extends javax.swing.JFrame {
 
         btnPro1.setBackground(new java.awt.Color(0, 153, 153));
         btnPro1.setForeground(new java.awt.Color(255, 255, 255));
-        btnPro1.setText("Gestión Pagos");
+        btnPro1.setText("Consulta");
         btnPro1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPro1ActionPerformed(evt);
@@ -206,7 +206,8 @@ public class MenuOpciones extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void btnPro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPro1ActionPerformed
-        // TODO add your handling code here:
+        consulta_Multas me = new consulta_Multas();
+        me.setVisible(true);
     }//GEN-LAST:event_btnPro1ActionPerformed
     
     

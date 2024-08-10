@@ -5,6 +5,7 @@
 package modelo;
 
 import controlador.Multa;
+import controlador.Usuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -12,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import controlador.Vehiculo;
 
 /**
  *
@@ -99,6 +101,11 @@ private HashMap<String, Integer> tipoMultaMap;
         btn_Buscar.setBackground(new java.awt.Color(0, 102, 204));
         btn_Buscar.setForeground(new java.awt.Color(255, 255, 255));
         btn_Buscar.setText("Buscar");
+        btn_Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_BuscarActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Tipo de multa:");
@@ -316,6 +323,38 @@ try {
     private void radioNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioNoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_radioNoActionPerformed
+
+    private void btn_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarActionPerformed
+       String placa = text_placa.getText().trim();
+       Vehiculo vn = new Vehiculo();
+    
+    try {
+        // Llamar al método que ejecuta el procedimiento almacenado
+        ResultSet rs = vn.verificarV(placa);
+        // Mostrar el resultado en función de la respuesta del procedimiento almacenado
+        if (rs.next()) {
+                String resultado = rs.getString("resultado"); // 'resultado' es la columna devuelta por el SP
+
+                if ("existe".equals(resultado)) {
+                JOptionPane.showMessageDialog(this, "La placa " + resultado + "", "Mensaje del sistema", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                int i = JOptionPane.showConfirmDialog(this, "No se encontró la placa \n¿Quieres ingresar el vehículo?", "Mensaje del sistema", JOptionPane.WARNING_MESSAGE);
+                if(i == 0){
+                datos_Vehiculos vi = new datos_Vehiculos();
+                vi.setVisible(true);
+            }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+        try {
+            vn.desconectar();
+        } catch (Exception e) {
+        
+        JOptionPane.showMessageDialog(this, e, "Error al cerrar recursos", JOptionPane.ERROR_MESSAGE);
+    }}
+    }//GEN-LAST:event_btn_BuscarActionPerformed
 
     
     public void cargarDatosM() {

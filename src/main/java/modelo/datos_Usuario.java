@@ -3,6 +3,7 @@ package modelo;
 
 import controlador.Usuario;
 import java.sql.SQLException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /*
@@ -21,6 +22,7 @@ public class datos_Usuario extends javax.swing.JFrame {
      */
     public datos_Usuario() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**

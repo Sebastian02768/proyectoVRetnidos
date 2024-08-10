@@ -8,6 +8,7 @@ import controlador.Multa;
 import controlador.Vehiculo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +22,7 @@ public class consulta_Multas extends javax.swing.JFrame {
      */
     public consulta_Multas() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         textNombre.setEditable(false);
         textAnio.setEditable(false);

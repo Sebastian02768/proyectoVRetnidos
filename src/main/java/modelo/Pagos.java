@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,6 +29,7 @@ private HashMap<String, Integer> idMultasMap;
      */
     public Pagos() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**

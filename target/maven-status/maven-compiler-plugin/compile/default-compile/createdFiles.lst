@@ -2,6 +2,7 @@ modelo\datos_Usuario$4.class
 modelo\eliminar_Usuario.class
 modelo\eliminar_Vehiculo.class
 controlador\Conexion.class
+modelo\datos_Multa$6.class
 modelo\datos_Usuario$1.class
 modelo\visualizar_Multa$2.class
 modelo\eliminar_Multa$2.class

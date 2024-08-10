@@ -445,7 +445,6 @@ public class datos_Vehiculos extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "La cédula " + resultado + "", "Mensaje del sistema", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                 JOptionPane.showMessageDialog(this, "La cédula " + resultado + "", "Mensaje del sistema", JOptionPane.INFORMATION_MESSAGE);
-
                 }
             }
         } catch (SQLException e) {
